@@ -16,6 +16,20 @@ using Vaultify;
 VaultifyCore.Initialize("put a very strong secret here");
 ```
 Now you can use it everywhere you want.
+If you want to do something when a person cheats by changing a value in memory directly(like reseting their game state) you have to register for `ValueChangedDirectly` event when you initialize VaultifyCore.
+```csharp
+using Vaultify;
+.
+.
+.
+.
+VaultifyCore.ValueChangedDirectly += () =>
+{
+    Debug.unityLogger.LogException(
+            new VaultTypeHackedException("Value changed directly"));
+};
+VaultifyCore.Initialize("put a very strong secret here");
+```
 ### Vault Types
 These types are more safe than usual because of a checksum system implemented in it.
 Just use Vault types instead of normal types like this:

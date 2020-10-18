@@ -20,13 +20,6 @@ namespace Vaultify
         private static int _rfc2898KeygenIterations;
         private static int _rijndaelKeySizeInBits;
 
-        static VaultifyCore()
-        {
-            ValueChangedDirectly += () =>
-                    Debug.unityLogger.LogException(
-                        new VaultTypeHackedException("Value changed directly"));
-        }
-
         public static void Initialize(string secret,
                                       int rfc2898KeygenIterations = 1000,
                                       int rijndaelKeySizeInBits = 256)

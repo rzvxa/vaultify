@@ -19,6 +19,12 @@ namespace Vaultify.Sample
 
         private void Awake()
         {
+
+            VaultifyCore.ValueChangedDirectly += () =>
+            {
+                Debug.unityLogger.LogException(
+                        new VaultTypeHackedException("Value changed directly"));
+            };
             VaultifyCore.Initialize("put a very strong secret here");
         }
 
