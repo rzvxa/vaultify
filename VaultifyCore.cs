@@ -15,6 +15,7 @@ namespace Vaultify
     {
         public static event Action ValueChangedDirectly;
 
+        public static bool IsInitialized => _isInitialized;
         private static bool _isInitialized;
         private static string _secret;
         private static int _rfc2898KeygenIterations;
@@ -33,13 +34,21 @@ namespace Vaultify
 
         }
 
+        private static void CheckInitialization()
+        {
+            if (!_isInitialized)
+                throw new Exception("Vaultify Core is not initialized");
+        }
+
         public static void FireValueChangedDirectly()
         {
-            ValueChangedDirectly?.Invoke();
+            if (ValueChangedDirectly != null)
+                ValueChangedDirectly.Invoke();
         }
 
         public static string ToSHA256(this object obj)
         {
+            if (obj == null) return null;
             return ComputeSHA256(BitConverter.GetBytes(obj.GetHashCode()));
         }
 
@@ -61,6 +70,7 @@ namespace Vaultify
 
         public static string Encrypt(string plainText)
         {
+            CheckInitialization();
             // Salt and IV is randomly generated each time, but is preprended to encrypted cipher text
             // so that the same Salt and IV values can be used when decrypting.
             var saltStringBytes = Generate256BitsOfRandomEntropy();
@@ -98,6 +108,7 @@ namespace Vaultify
 
         public static string Decrypt(string cipherText)
         {
+            CheckInitialization();
             // Get the complete stream of bytes that represent:
             // [32 bytes of Salt] + [32 bytes of IV] + [n bytes of CipherText]
             var cipherTextBytesWithSaltAndIv = Convert.FromBase64String(cipherText);
