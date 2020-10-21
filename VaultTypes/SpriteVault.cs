@@ -8,10 +8,14 @@ namespace Vaultify.VaultTypes
     {
         public SpriteVault(Sprite value) : base(value) { }
 
-        public static implicit operator SpriteVault(Sprite value) =>
-            new SpriteVault(value);
+        public static implicit operator SpriteVault(Sprite value)
+        {
+            return new SpriteVault(value);
+        }
 
-        public static implicit operator Sprite(SpriteVault vault) =>
-            vault.Value;
+        public static implicit operator Sprite(SpriteVault vault)
+        {
+            return vault.Value;
+        }
     }
 }

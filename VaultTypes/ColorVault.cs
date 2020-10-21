@@ -8,10 +8,14 @@ namespace Vaultify.VaultTypes
     {
         public ColorVault(Color value) : base(value) { }
 
-        public static implicit operator ColorVault(Color value) =>
-            new ColorVault(value);
+        public static implicit operator ColorVault(Color value)
+        {
+            return new ColorVault(value);
+        }
 
-        public static implicit operator Color(ColorVault vault) =>
-            vault.Value;
+        public static implicit operator Color(ColorVault vault)
+        {
+            return vault.Value;
+        }
     }
 }

@@ -8,10 +8,14 @@ namespace Vaultify.VaultTypes
     {
         public MeshVault(Mesh value) : base(value) { }
 
-        public static implicit operator MeshVault(Mesh value) =>
-            new MeshVault(value);
+        public static implicit operator MeshVault(Mesh value)
+        {
+            return new MeshVault(value);
+        }
 
-        public static implicit operator Mesh(MeshVault vault) =>
-            vault.Value;
+        public static implicit operator Mesh(MeshVault vault)
+        {
+            return vault.Value;
+        }
     }
 }

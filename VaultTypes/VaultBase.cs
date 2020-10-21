@@ -30,7 +30,10 @@ namespace Vaultify.VaultTypes
             }
         }
 
-        public VaultBase(T value) => Value = value;
+        public VaultBase(T value)
+        {
+            Value = value;
+        }
 
         public bool IsValid()
         {
@@ -42,9 +45,15 @@ namespace Vaultify.VaultTypes
 
         public void OnBeforeSerialize() { }
 
-        public void OnAfterDeserialize() => CalculateVaultValue();
+        public void OnAfterDeserialize()
+        {
+            CalculateVaultValue();
+        }
 
 
-        private void CalculateVaultValue() => _hash = _value.ToSHA256();
+        private void CalculateVaultValue()
+        {
+            _hash = _value.ToSHA256();
+        }
     }
 }

@@ -7,10 +7,14 @@ namespace Vaultify.VaultTypes
     {
         public IntVault(int value) : base(value) { }
 
-        public static implicit operator IntVault(int value) =>
-            new IntVault(value);
+        public static implicit operator IntVault(int value)
+        {
+            return new IntVault(value);
+        }
 
-        public static implicit operator int(IntVault vault) =>
-            vault.Value;
+        public static implicit operator int(IntVault vault)
+        {
+            return vault.Value;
+        }
     }
 }

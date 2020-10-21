@@ -15,7 +15,10 @@ namespace Vaultify.Sample
         [SerializeField] private StringVault _myString = "Default string is here";
 
         [ContextMenu("ClearPrefs")]
-        private void ClearPrefs() => PlayerPrefs.DeleteAll();
+        private void ClearPrefs()
+        {
+            PlayerPrefs.DeleteAll();
+        }
 
         private void Awake()
         {

@@ -8,10 +8,14 @@ namespace Vaultify.VaultTypes
     {
         public MaterialVault(Material value) : base(value) { }
 
-        public static implicit operator MaterialVault(Material value) =>
-            new MaterialVault(value);
+        public static implicit operator MaterialVault(Material value)
+        {
+            return new MaterialVault(value);
+        }
 
-        public static implicit operator Material(MaterialVault vault) =>
-            vault.Value;
+        public static implicit operator Material(MaterialVault vault)
+        {
+            return vault.Value;
+        }
     }
 }

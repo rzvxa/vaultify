@@ -7,10 +7,14 @@ namespace Vaultify.VaultTypes
     {
         public FloatVault(float value) : base(value) { }
 
-        public static implicit operator FloatVault(float value) =>
-            new FloatVault(value);
+        public static implicit operator FloatVault(float value)
+        {
+            return new FloatVault(value);
+        }
 
-        public static implicit operator float(FloatVault vault) =>
-            vault.Value;
+        public static implicit operator float(FloatVault vault)
+        {
+            return vault.Value;
+        }
     }
 }

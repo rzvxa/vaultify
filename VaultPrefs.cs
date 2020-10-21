@@ -5,7 +5,11 @@ namespace Vaultify
     public static class VaultPrefs
     {
         private static readonly string KeyFormat = "{0}_{1}_vault"; // {type}_{key}_vault
-        public static void DeleteAll() => PlayerPrefs.DeleteAll();
+
+        public static void DeleteAll()
+        {
+            PlayerPrefs.DeleteAll();
+        }
 
         public static void DeleteFloat(string key)
         {
@@ -81,8 +85,10 @@ namespace Vaultify
             SetRaw(key, value);
         }
 
-        private static void SetRaw(string key, string value) =>
+        private static void SetRaw(string key, string value)
+        {
             PlayerPrefs.SetString(key, VaultifyCore.Encrypt(value));
+        }
 
         private static string GetRaw(string key, string @default)
         {

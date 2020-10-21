@@ -33,11 +33,15 @@ namespace Vaultify
 
         }
 
-        public static void FireValueChangedDirectly() =>
+        public static void FireValueChangedDirectly()
+        {
             ValueChangedDirectly?.Invoke();
+        }
 
-        public static string ToSHA256(this object obj) =>
-            ComputeSHA256(BitConverter.GetBytes(obj.GetHashCode()));
+        public static string ToSHA256(this object obj)
+        {
+            return ComputeSHA256(BitConverter.GetBytes(obj.GetHashCode()));
+        }
 
 
         public static string ComputeSHA256(byte[] bytes)
